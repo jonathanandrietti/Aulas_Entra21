@@ -11,12 +11,10 @@ public class Pessoa {
         }
     }
         public String getNome () {
-            nousages
             return this.nome;
     }
 
         public void apresentar () {
-            nousages
             System.out.println("Meu nome é " + this.nome);
             System.out.println("Meu nome tem " + this.nome.length() + "letras");
     }
