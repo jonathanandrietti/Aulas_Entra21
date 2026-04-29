@@ -1,4 +1,4 @@
-package ProgramOOP.Base.Encapsulamento.exemplo1;
+package ProgramOOP.Base.Encapsulamento.Aula.exemplo1;
 
 public class Pessoa {
     private String nome;

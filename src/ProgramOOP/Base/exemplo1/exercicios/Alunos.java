@@ -1,4 +1,4 @@
-package ProgramOOP.Base.exercicios;
+package ProgramOOP.Base.exemplo1.exercicios;
 
 public class Alunos {
     String nome;

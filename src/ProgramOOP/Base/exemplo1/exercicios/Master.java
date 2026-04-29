@@ -1,6 +1,4 @@
-package ProgramOOP.Base.exercicios;
-
-import ProgramOOP.Base.exemplo1.Carro;
+package ProgramOOP.Base.exemplo1.exercicios;
 
 import java.util.Scanner;
 

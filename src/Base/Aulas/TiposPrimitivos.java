@@ -1,4 +1,4 @@
-package Base;
+package Base.Aulas;
 
 import java.util.Scanner;
 

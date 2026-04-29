@@ -1,4 +1,4 @@
-package Base;
+package Base.Aulas;
 
 public class Condicionais {
     public static void main(String[] args) {

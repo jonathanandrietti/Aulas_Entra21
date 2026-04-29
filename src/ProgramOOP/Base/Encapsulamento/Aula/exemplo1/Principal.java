@@ -1,4 +1,4 @@
-package ProgramOOP.Base.Encapsulamento.exemplo1;
+package ProgramOOP.Base.Encapsulamento.Aula.exemplo1;
 
 public class Principal {
     public static void main(String[] args) {
