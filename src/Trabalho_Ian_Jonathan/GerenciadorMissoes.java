@@ -47,11 +47,29 @@ public class GerenciadorMissoes {
     }
 
     public void associarNave(String idMissao, String idNave) {
-        associarNave(idMissao, idNave, gerenciadorNaves); // Usa o campo da classe
+        NaveEspacial nave = gerenciadorNaves.buscarNave(idNave);
+        if (nave != null) {
+            Missao missao = mapaMissoes.get(idMissao);
+            if (missao != null) {
+                missao.setNave(nave);
+            }
+        }
     }
 
     public void associarAstronauta(String idMissao, String idAstronauta) {
-        associarAstronauta(idMissao, idAstronauta, gerenciadorAstronautas); // Usa o campo da classe
+        Astronauta astronauta = gerenciadorAstronautas.buscarAstronauta(idAstronauta);
+        if (astronauta != null) {
+            Missao missao = mapaMissoes.get(idMissao);
+            if (missao != null) {
+                Astronauta[] astronautas = missao.getAstronautas();
+                for (int i = 0; i < astronautas.length; i++) {
+                    if (astronautas[i] == null) {
+                        astronautas[i] = astronauta;
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     public void associarNave(String idMissao, String idNave, GerenciadorNaves gerenciadorNaves) {
@@ -105,14 +123,40 @@ public class GerenciadorMissoes {
     }
 
     public void listarMissoes() {
+        System.out.println("\n--- Lista de Missões ---");
+        if (missoes.isEmpty()) {
+            System.out.println("Nenhuma missão cadastrada.");
+            return;
+        }
+
         for (Missao missao : missoes) {
-            System.out.println("Missão: " + missao.getNome());
+            System.out.println("ID: " + missao.getId());
+            System.out.println("Nome: " + missao.getNome());
             System.out.println("Objetivo: " + missao.getObjetivo());
             System.out.println("Data: " + missao.getDataLancamento());
             System.out.println("Status: " + missao.getStatus());
+
+            // Exibir nave associada
             if (missao.getNave() != null) {
                 System.out.println("Nave associada: " + missao.getNave().getNome());
+            } else {
+                System.out.println("Nave associada: Nenhuma");
             }
+
+            // Exibir astronautas associados
+            System.out.println("Astronautas associados:");
+            Astronauta[] astronautas = missao.getAstronautas();
+            boolean temAstronauta = false;
+            for (Astronauta astronauta : astronautas) {
+                if (astronauta != null) {
+                    System.out.println(" - " + astronauta.getNome());
+                    temAstronauta = true;
+                }
+            }
+            if (!temAstronauta) {
+                System.out.println(" - Nenhum");
+            }
+
             System.out.println("-----------------------------");
         }
     }

@@ -27,8 +27,13 @@ public class GerenciadorAstronautas {
         System.out.println("Astronauta " + nome + " adicionado com sucesso!");
     }
 
-    public Astronauta buscarAstronauta(String id) {
-        return mapaAstronautas.get(id);
+    public Astronauta buscarAstronauta(String idAstronauta) {
+        for (Astronauta astronauta : astronautas) {
+            if (astronauta.getId().equals(idAstronauta)) {
+                return astronauta;
+            }
+        }
+        return null;
     }
 
     private void atualizarMapaAstronautas() {
