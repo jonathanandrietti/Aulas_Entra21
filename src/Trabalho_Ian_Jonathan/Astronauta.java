@@ -5,14 +5,25 @@ public class Astronauta {
     private String nome;
     private String especialidade;
 
-    public Astronauta(String id, String nome, String especialidade) {
-        this.id = id;
+    public Astronauta(String s, String nome, String especialidade) {
+        this.id = generateId();
         this.nome = nome;
         this.especialidade = especialidade;
     }
 
-    // Getters
-    public String getId() { return id; }
-    public String getNome() { return nome; }
+    private String generateId() {
+        return "A" + System.currentTimeMillis();
+    }
+
+    // Getters e Setters
+    public String getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) { this.nome = nome; }
     public String getEspecialidade() { return especialidade; }
+    public void setEspecialidade(String especialidade) { this.especialidade = especialidade; }
 }

@@ -1,10 +1,13 @@
 package Trabalho_Ian_Jonathan;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GerenciadorAstronautas {
     private List<Astronauta> astronautas = new ArrayList<>();
+    private Map<String, Astronauta> mapaAstronautas = new HashMap<>();
     private int proximoIdAstronauta = 1;
 
     public void adicionarAstronauta(String nome, String especialidade) {
@@ -20,7 +23,19 @@ public class GerenciadorAstronautas {
                 nome.trim(),
                 especialidade.trim()
         ));
+        atualizarMapaAstronautas();
         System.out.println("Astronauta " + nome + " adicionado com sucesso!");
+    }
+
+    public Astronauta buscarAstronauta(String id) {
+        return mapaAstronautas.get(id);
+    }
+
+    private void atualizarMapaAstronautas() {
+        mapaAstronautas.clear();
+        for (Astronauta astronauta : astronautas) {
+            mapaAstronautas.put(astronauta.getId(), astronauta);
+        }
     }
 
     public void listarAstronautas() {

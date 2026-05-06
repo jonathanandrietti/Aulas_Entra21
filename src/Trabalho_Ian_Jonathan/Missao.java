@@ -3,43 +3,64 @@ package Trabalho_Ian_Jonathan;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Missao {
+public abstract class Missao {
     private String id;
     private String nome;
     private String objetivo;
     private String dataLancamento;
     private String status;
-    private String idNave;
-    private List<String> idAstronautas;
+    private Nave nave;
+    private Astronauta[] astronautas = new Astronauta[5]; // Exemplo com 5 posições
 
-    public Missao(String id, String nome, String objetivo, String dataLancamento, String status) {
-        this.id = id;
+    public Missao(String nome, String objetivo, String dataLancamento, String status) {
+        this.id = generateId();
         this.nome = nome;
         this.objetivo = objetivo;
         this.dataLancamento = dataLancamento;
         this.status = status;
-        this.idNave = "N/A";
-        this.idAstronautas = new ArrayList<>();
+        this.astronautas = new Astronauta[5];
     }
 
-    // Getters e Setters
-    public String getId() { return id; }
-    public String getNome() { return nome; }
-    public String getObjetivo() { return objetivo; }
-    public String getDataLancamento() { return dataLancamento; }
-    public String getStatus() { return status; }
-    public String getIdNave() { return idNave; }
-    public List<String> getIdAstronautas() { return new ArrayList<>(idAstronautas); }
-
-    public void setIdNave(String idNave) {
-        this.idNave = idNave;
+    private String generateId() {
+        return "M" + System.currentTimeMillis();
     }
 
-    public void adicionarAstronauta(String idAstronauta) {
-        idAstronautas.add(idAstronauta);
+    // Método faltante
+    public String getNome() {
+        return nome;
     }
 
-    public void atualizarStatus(String novoStatus) {
-        this.status = novoStatus;
+    public void setNave(Nave nave) {
+        this.nave = nave;
     }
+
+    public Nave getNave() {
+        return nave;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Astronauta[] getAstronautas() {
+        return astronautas;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getObjetivo() {
+        return objetivo;
+    }
+
+    public String getDataLancamento() {
+        return dataLancamento;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public abstract void executar();
 }

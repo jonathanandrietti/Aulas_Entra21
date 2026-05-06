@@ -13,15 +13,19 @@ public class Nave {
         this.capacidade = capacidade;
     }
 
-    // Getters
-    public String getId() { return id; }
-    public String getNome() { return nome; }
-    public String getTipo() { return tipo; }
-    public int getCapacidade() { return capacidade; }
+    public String getId() {
+        return id;
+    }
 
-    // Override toString() para exibir dados corretamente
-    @Override
-    public String toString() {
-        return "ID: " + id + " | Nome: " + nome + " | Tipo: " + tipo + " | Capacidade: " + capacidade;
+    public String getNome() {
+        return nome;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public int getCapacidade() {
+        return capacidade;
     }
 }

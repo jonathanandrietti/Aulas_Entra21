@@ -1,27 +1,19 @@
 package Trabalho_Ian_Jonathan;
 
-//import Trabalho_Ian_Jonathan.Nave;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class GerenciadorNaves {
-    private List<Nave> naves = new ArrayList<>();
+    private List<NaveEspacial> naves = new ArrayList<>();
     private int proximoIdNave = 1;
 
     public void adicionarNave(String nome, String tipo, String capacidade) {
-        if (nome == null || nome.trim().isEmpty()) {
-            throw new IllegalArgumentException("Nome da nave não pode ser vazio");
-        }
-        if (tipo == null || tipo.trim().isEmpty()) {
-            throw new IllegalArgumentException("Tipo da nave não pode ser vazio");
-        }
         try {
             int capacidadeNumerica = Integer.parseInt(capacidade);
             if (capacidadeNumerica <= 0) {
                 throw new IllegalArgumentException("Capacidade deve ser um número positivo");
             }
-            naves.add(new Nave(
+            naves.add(new NaveEspacial(
                     String.valueOf(proximoIdNave++),
                     nome.trim(),
                     tipo.trim(),
@@ -33,20 +25,17 @@ public class GerenciadorNaves {
         }
     }
 
-    public List<Nave> getNaves() {
+    public NaveEspacial buscarNave(String idNave) {
+        for (NaveEspacial nave : naves) {
+            if (nave.getId().equals(idNave)) {
+                return nave;
+            }
+        }
+        return null;
+    }
+
+    public List<NaveEspacial> getNaves() {
         return naves;
-    }
-
-    public void setNaves(List<Nave> naves) {
-        this.naves = naves;
-    }
-
-    public int getProximoIdNave() {
-        return proximoIdNave;
-    }
-
-    public void setProximoIdNave(int proximoIdNave) {
-        this.proximoIdNave = proximoIdNave;
     }
 
     public void listarNaves() {
@@ -56,7 +45,7 @@ public class GerenciadorNaves {
             return;
         }
 
-        for (Nave nave : naves) {
+        for (NaveEspacial nave : naves) {
             System.out.println("ID: " + nave.getId() +
                     " | Nome: " + nave.getNome() +
                     " | Tipo: " + nave.getTipo() +

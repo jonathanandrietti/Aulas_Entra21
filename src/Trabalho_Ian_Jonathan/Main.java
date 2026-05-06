@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        GerenciadorMissoes gerenciadorMissoes = new GerenciadorMissoes();
         GerenciadorNaves gerenciadorNaves = new GerenciadorNaves();
         GerenciadorAstronautas gerenciadorAstronautas = new GerenciadorAstronautas();
+        GerenciadorMissoes gerenciadorMissoes = new GerenciadorMissoes(gerenciadorNaves, gerenciadorAstronautas);
         int opcao;
 
         // Dados iniciais para teste
